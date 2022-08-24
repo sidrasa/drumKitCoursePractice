@@ -29,11 +29,21 @@ function playsound(val){
 
 document.addEventListener("keydown",function(e){
     playsound(e.key);
+    buttonAnime(e.key);
 });
 
 for(var i=0;i<drumButtonSize;i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function (){
         var val=this.innerHTML;
         playsound(val);
+        buttonAnime(val);
     });
+}
+
+function buttonAnime(curKey){
+    var active=document.querySelector("."+curKey);
+    active.classList.add("pressed");
+    setTimeout(() => {
+        active.classList.remove("pressed");
+    }, 100);
 }
